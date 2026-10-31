@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EcoSense Smart Waste</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0A1C17}
+a{color:inherit;text-decoration:none}
+a:hover{color:inherit}
+button{font-family:inherit}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes ripple{0%{transform:scale(.3);opacity:.8}100%{transform:scale(3.4);opacity:0}}
+@keyframes fillup{0%{transform:scaleY(.22)}100%{transform:scaleY(.94)}}
+@keyframes wave{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes rise{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(61,220,151,.55)}70%{box-shadow:0 0 0 16px rgba(61,220,151,0)}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes blink{50%{opacity:.3}}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}
+@keyframes flow{to{background-position:240px 0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.float{animation:float 5s ease-in-out infinite}
+.float2{animation:float 6.5s ease-in-out -2s infinite}
+.ripple{transform-box:fill-box;transform-origin:center;animation:ripple 2.4s ease-out infinite}
+.ripple2{animation-delay:1.2s}
+.fillup{transform-box:fill-box;transform-origin:bottom;animation:fillup 8s ease-in-out infinite alternate}
+.wave{animation:wave 3s linear infinite}
+.marq{animation:marquee 38s linear infinite}
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}
+.pulse{animation:pulse 2s ease-out infinite}
+.blink{animation:blink 1.2s ease-in-out infinite}
+.drift{animation:drift 14s ease-in-out infinite}
+.flowbar{background-image:repeating-linear-gradient(90deg,#3DDC97 0 14px,transparent 14px 30px);background-size:240px 100%;animation:flow 3s linear infinite}
+.spin{animation:spin 18s linear infinite}
+.card{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,background .35s}
+.card:hover{transform:translateY(-8px);border-color:rgba(61,220,151,.55)!important;background:rgba(255,255,255,.07)!important}
+.btn{transition:transform .25s,filter .25s}
+.btn:hover{transform:translateY(-3px);filter:brightness(1.1)}
+.tube{transition:height .9s cubic-bezier(.3,.8,.3,1),background .6s}
+.bar{transform-origin:left;animation:grow 1.4s cubic-bezier(.2,.7,.2,1) both}
+@supports (animation-timeline: view()){
+.rv{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+.bar{animation:grow linear both;animation-timeline:view();animation-range:entry 0% entry 70%}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+</head>
+<body>
+
+<div style="--accent: #3DDC97; position: relative; width: 100%; overflow: hidden; background: #0A1C17; color: #E8F5EF; font-family: 'DM Sans', system-ui, sans-serif; line-height: 1.55">
+
+<!-- ambient glows -->
+<div class="drift" style="position: absolute; top: -160px; right: -120px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(61,220,151,.22), transparent 68%); pointer-events: none"></div>
+<div class="drift" style="position: absolute; top: 620px; left: -200px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(94,200,255,.14), transparent 68%); pointer-events: none; animation-delay: -6s"></div>
+
+<!-- NAV -->
+<header style="position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px clamp(20px, 5vw, 72px); max-width: 1296px; margin: 0 auto; box-sizing: border-box">
+<a href="#top" style="display: flex; align-items: center; gap: 12px; font-family: Sora, sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.02em">
+<svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect x="7" y="11" width="20" height="19" rx="4" stroke="#3DDC97" stroke-width="2.4"/><path d="M5 11h24" stroke="#3DDC97" stroke-width="2.4" stroke-linecap="round"/><path d="M13 7h8" stroke="#3DDC97" stroke-width="2.4" stroke-linecap="round"/><path d="M17 26c-3 0-5-2-5-5 3 0 5 2 5 5Zm0 0c0-3 2-5 5-5 0 3-2 5-5 5Z" fill="#3DDC97"/></svg>
+EcoSense
+</a>
+<nav style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 15px; font-weight: 500; color: #B7CEC4">
+<a href="#problem">Problem</a>
+<a href="#how">How it works</a>
+<a href="#live">Live demo</a>
+<a href="#features">Innovations</a>
+<a href="#impact">Impact</a>
+</nav>
+<a href="#live" class="btn" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px; border-radius: 999px; background: var(--accent); color: #062018; font-weight: 700; font-size: 15px">Try the simulator</a>
+</header>
+
+<!-- HERO -->
+<section id="top" style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 40px clamp(20px, 5vw, 72px) 72px; box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 1 1 460px; min-width: 0">
+<div class="rise" style="display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(61,220,151,.4); background: rgba(61,220,151,.08); font-size: 14px; font-weight: 500; color: #8FF0C4">
+<span class="blink" style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent)"></span>
+IoT + AI for cleaner, quieter cities
+</div>
+<h1 class="rise d1" style="margin: 22px 0 0; font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(40px, 6vw, 78px); line-height: 1.04; letter-spacing: -0.035em">Bins that call for help <span style="color: var(--accent)">before</span> they overflow.</h1>
+<p class="rise d2" style="margin: 24px 0 0; max-width: 540px; font-size: 19px; color: #B7CEC4">EcoSense turns every dustbin into a connected sensor node. It predicts fill levels, flags overflow risk early, and sends collection trucks only where they are needed, on the shortest route.</p>
+<div class="rise d3" style="margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px">
+<a href="#live" class="btn" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 30px; border-radius: 999px; background: var(--accent); color: #062018; font-weight: 700; font-size: 16px">Watch it detect overflow</a>
+<a href="#how" class="btn" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 30px; border-radius: 999px; border: 1.5px solid rgba(232,245,239,.35); font-weight: 600; font-size: 16px">See the architecture</a>
+</div>
+<div class="rise d4" style="margin-top: 44px; display: flex; flex-wrap: wrap; gap: 14px 40px">
+<div><div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 30px; color: var(--accent)">24/7</div><div style="font-size: 14px; color: #9DB8AE">fill-level monitoring</div></div>
+<div><div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 30px; color: var(--accent)">85%</div><div style="font-size: 14px; color: #9DB8AE">default overflow alert point</div></div>
+<div><div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 30px; color: var(--accent)">1 tap</div><div style="font-size: 14px; color: #9DB8AE">citizen overflow report</div></div>
+</div>
+</div>
+
+<div style="flex: 1 1 340px; min-width: 0; display: flex; justify-content: center">
+<div class="float" style="position: relative; width: 100%; max-width: 420px">
+<svg viewBox="0 0 360 440" width="100%" role="img" aria-label="Animated smart dustbin with a sensor beam and rising waste level" style="display: block">
+<defs>
+<clipPath id="binClip"><path d="M92 150h176l-14 232a14 14 0 0 1-14 13H120a14 14 0 0 1-14-13Z"/></clipPath>
+<linearGradient id="beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3DDC97" stop-opacity=".55"/><stop offset="1" stop-color="#3DDC97" stop-opacity="0"/></linearGradient>
+<linearGradient id="wasteG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC857"/><stop offset="1" stop-color="#FF7A59"/></linearGradient>
+</defs>
+<ellipse cx="180" cy="412" rx="120" ry="14" fill="#000" opacity=".35"/>
+<path d="M92 150h176l-14 232a14 14 0 0 1-14 13H120a14 14 0 0 1-14-13Z" fill="#12332A" stroke="#3DDC97" stroke-width="3"/>
+<g clip-path="url(#binClip)">
+<g class="fillup">
+<rect x="80" y="150" width="200" height="260" fill="url(#wasteG)"/>
+<g class="wave"><path d="M0 150q30-18 60 0t60 0 60 0 60 0 60 0 60 0 60 0 60 0v30H0Z" fill="#FFD98A" transform="translate(-40 -6)"/></g>
+</g>
+</g>
+<rect x="74" y="122" width="212" height="30" rx="10" fill="#1B4A3C" stroke="#3DDC97" stroke-width="3"/>
+<rect x="150" y="104" width="60" height="20" rx="8" fill="#1B4A3C" stroke="#3DDC97" stroke-width="3"/>
+<path d="M120 170v190M180 170v190M240 170v190" stroke="#0A1C17" stroke-opacity=".25" stroke-width="3"/>
+<circle cx="180" cy="94" r="12" fill="#3DDC97"/>
+<circle class="ripple" cx="180" cy="94" r="12" fill="none" stroke="#3DDC97" stroke-width="2.5"/>
+<circle class="ripple ripple2" cx="180" cy="94" r="12" fill="none" stroke="#3DDC97" stroke-width="2.5"/>
+<path d="M180 108 120 150h120Z" fill="url(#beam)" opacity=".6"/>
+<path d="M146 62a48 48 0 0 1 68 0M160 48a70 70 0 0 1 40 0" fill="none" stroke="#8FF0C4" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+</svg>
+<div class="float2" style="position: absolute; right: -6px; top: 36px; padding: 12px 16px; border-radius: 16px; background: rgba(10,28,23,.92); border: 1px solid rgba(255,138,128,.6); box-shadow: 0 18px 40px rgba(0,0,0,.4)">
+<div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #FF8A80"><span class="blink" style="width: 8px; height: 8px; border-radius: 50%; background: #FF5A4F"></span>Overflow risk</div>
+<div style="font-size: 13px; color: #B7CEC4; margin-top: 2px">Bin 14 · truck assigned</div>
+</div>
+<div class="float" style="position: absolute; left: -10px; bottom: 70px; padding: 12px 16px; border-radius: 16px; background: rgba(10,28,23,.92); border: 1px solid rgba(61,220,151,.5); box-shadow: 0 18px 40px rgba(0,0,0,.4); animation-delay: -3s">
+<div style="font-size: 13px; font-weight: 700; color: #8FF0C4">Route optimised</div>
+<div style="font-size: 13px; color: #B7CEC4; margin-top: 2px">Only urgent stops on the list</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LIVE FEED TICKER -->
+<div style="position: relative; z-index: 1; overflow: hidden; border-block: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.03); padding: 16px 0">
+<div class="marq" style="display: flex; width: max-content; white-space: nowrap; font-family: Sora, sans-serif; font-size: 14px; font-weight: 500; letter-spacing: .04em; color: #9DB8AE">
+<span style="padding: 0 28px"><b style="color: var(--accent)">●</b> BIN-014 · 92% · ALERT SENT</span>
+<span style="padding: 0 28px"><b style="color: #FFC857">●</b> BIN-007 · 68% · FILLING FAST</span>
+<span style="padding: 0 28px"><b style="color: var(--accent)">●</b> BIN-021 · 21% · HEALTHY</span>
+<span style="padding: 0 28px"><b style="color: #FF8A80">●</b> BIN-033 · LID TILT · FIELD CHECK</span>
+<span style="padding: 0 28px"><b style="color: #FFC857">●</b> BIN-002 · TEMP SPIKE · FIRE WATCH</span>
+<span style="padding: 0 28px"><b style="color: var(--accent)">●</b> TRUCK 3 · ROUTE UPDATED · 4 STOPS</span>
+<span style="padding: 0 28px"><b style="color: var(--accent)">●</b> BIN-014 · 92% · ALERT SENT</span>
+<span style="padding: 0 28px"><b style="color: #FFC857">●</b> BIN-007 · 68% · FILLING FAST</span>
+<span style="padding: 0 28px"><b style="color: var(--accent)">●</b> BIN-021 · 21% · HEALTHY</span>
+<span style="padding: 0 28px"><b style="color: #FF8A80">●</b> BIN-033 · LID TILT · FIELD CHECK</span>
+<span style="padding: 0 28px"><b style="color: #FFC857">●</b> BIN-002 · TEMP SPIKE · FIRE WATCH</span>
+<span style="padding: 0 28px"><b style="color: var(--accent)">●</b> TRUCK 3 · ROUTE UPDATED · 4 STOPS</span>
+</div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem" style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 110px clamp(20px, 5vw, 72px) 40px; box-sizing: border-box">
+<div class="rv" style="max-width: 720px">
+<div style="font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent)">The problem</div>
+<h2 style="margin: 14px 0 0; font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; letter-spacing: -0.03em">Fixed schedules collect from empty bins and miss full ones.</h2>
+</div>
+<div style="margin-top: 48px; display: flex; flex-wrap: wrap; gap: 22px">
+<div class="card rv" style="flex: 1 1 280px; padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<div style="width: 52px; height: 52px; border-radius: 16px; background: rgba(255,138,128,.14); display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 4v10M13 19v1" stroke="#FF8A80" stroke-width="2.6" stroke-linecap="round"/><circle cx="13" cy="13" r="10" stroke="#FF8A80" stroke-width="2"/></svg></div>
+<h3 style="margin: 20px 0 8px; font-family: Sora, sans-serif; font-size: 22px">Overflow goes unseen</h3>
+<p style="margin: 0; color: #B7CEC4">Nobody knows a bin is full until residents complain. Litter spreads, smells build up and strays and pests arrive.</p>
+</div>
+<div class="card rv" style="flex: 1 1 280px; padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<div style="width: 52px; height: 52px; border-radius: 16px; background: rgba(255,200,87,.14); display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M4 18c3-8 7-8 9-3s6 3 9-6" stroke="#FFC857" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+<h3 style="margin: 20px 0 8px; font-family: Sora, sans-serif; font-size: 22px">Wasted trips</h3>
+<p style="margin: 0; color: #B7CEC4">Trucks follow the same loop every day. Half-empty stops burn fuel, driver hours and emissions for no benefit.</p>
+</div>
+<div class="card rv" style="flex: 1 1 280px; padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<div style="width: 52px; height: 52px; border-radius: 16px; background: rgba(94,200,255,.14); display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="4" y="5" width="18" height="16" rx="3" stroke="#5EC8FF" stroke-width="2"/><path d="M9 11h8M9 15h5" stroke="#5EC8FF" stroke-width="2" stroke-linecap="round"/></svg></div>
+<h3 style="margin: 20px 0 8px; font-family: Sora, sans-serif; font-size: 22px">No data to plan with</h3>
+<p style="margin: 0; color: #B7CEC4">Without fill history, councils cannot place bins well, size fleets properly or prove that cleanliness targets are met.</p>
+</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 100px clamp(20px, 5vw, 72px) 40px; box-sizing: border-box">
+<div class="rv" style="max-width: 720px">
+<div style="font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent)">The solution</div>
+<h2 style="margin: 14px 0 0; font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; letter-spacing: -0.03em">From sensor to street in four steps.</h2>
+</div>
+<div class="flowbar" style="margin: 52px 0 0; height: 3px; border-radius: 3px; opacity: .8"></div>
+<div style="margin-top: -2px; display: flex; flex-wrap: wrap; gap: 22px">
+<div class="card rv" style="flex: 1 1 250px; margin-top: 28px; padding: 28px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<div class="pulse" style="width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #062018; display: flex; align-items: center; justify-content: center; font-family: Sora, sans-serif; font-weight: 800">1</div>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">Sense</h3>
+<p style="margin: 0; color: #B7CEC4; font-size: 16px">A lid-mounted ultrasonic or time-of-flight sensor measures the distance to the waste. Tilt, temperature and gas sensors watch for tipping, fire and odour.</p>
+</div>
+<div class="card rv" style="flex: 1 1 250px; margin-top: 28px; padding: 28px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<div class="pulse" style="width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #062018; display: flex; align-items: center; justify-content: center; font-family: Sora, sans-serif; font-weight: 800; animation-delay: .5s">2</div>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">Transmit</h3>
+<p style="margin: 0; color: #B7CEC4; font-size: 16px">A low-power microcontroller wakes at intervals and sends readings over LoRaWAN, NB-IoT or GSM. A solar cell and battery keep it running for months.</p>
+</div>
+<div class="card rv" style="flex: 1 1 250px; margin-top: 28px; padding: 28px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<div class="pulse" style="width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #062018; display: flex; align-items: center; justify-content: center; font-family: Sora, sans-serif; font-weight: 800; animation-delay: 1s">3</div>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">Predict</h3>
+<p style="margin: 0; color: #B7CEC4; font-size: 16px">The cloud learns each bin's fill pattern by hour, day and event. It forecasts when every bin will hit the threshold and raises an alert ahead of time.</p>
+</div>
+<div class="card rv" style="flex: 1 1 250px; margin-top: 28px; padding: 28px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<div class="pulse" style="width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #062018; display: flex; align-items: center; justify-content: center; font-family: Sora, sans-serif; font-weight: 800; animation-delay: 1.5s">4</div>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">Dispatch</h3>
+<p style="margin: 0; color: #B7CEC4; font-size: 16px">A route optimiser builds a daily plan with only the urgent bins and pushes it to the driver's phone. The dashboard confirms each pickup.</p>
+</div>
+</div>
+</section>
+
+<!-- LIVE SIMULATOR -->
+<section id="live" style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 110px clamp(20px, 5vw, 72px) 40px; box-sizing: border-box">
+<div class="rv" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px">
+<div style="max-width: 680px">
+<div style="font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent)">Live demo</div>
+<h2 style="margin: 14px 0 0; font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; letter-spacing: -0.03em">Watch bins fill, alert and get cleared.</h2>
+<p style="margin: 16px 0 0; color: #B7CEC4; font-size: 18px">This is a simulation with made-up data. Bins fill in real time. When one crosses 85% it raises an alert and joins the truck route. Press Dispatch to empty it.</p>
+</div>
+<button id="rush" class="btn" style="min-height: 52px; padding: 0 26px; border-radius: 999px; border: 1.5px solid #FFC857; background: transparent; color: #FFC857; font-weight: 700; font-size: 16px; cursor: pointer">Simulate rush hour</button>
+</div>
+
+<div style="margin-top: 40px; display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start">
+<div style="flex: 999 1 640px; min-width: 0; display: flex; flex-wrap: wrap; gap: 18px">
+<div id="bins" style="display: contents"></div>
+</div>
+
+<div style="flex: 1 1 320px; min-width: 0; padding: 28px; border-radius: 24px; border: 1px solid rgba(61,220,151,.35); background: linear-gradient(160deg, rgba(61,220,151,.12), rgba(255,255,255,.03)); box-sizing: border-box">
+<div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 20px">Command centre</div>
+<div style="margin-top: 20px; display: flex; gap: 14px">
+<div style="flex: 1; padding: 14px; border-radius: 16px; background: rgba(0,0,0,.25)">
+<div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 32px; color: #FF8A80"><span id="alerts">0</span></div>
+<div style="font-size: 13px; color: #9DB8AE">active alerts</div>
+</div>
+<div style="flex: 1; padding: 14px; border-radius: 16px; background: rgba(0,0,0,.25)">
+<div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 32px; color: var(--accent)"><span id="collected">0</span></div>
+<div style="font-size: 13px; color: #9DB8AE">bins cleared</div>
+</div>
+</div>
+<div style="margin-top: 24px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #9DB8AE">Truck route (bins at 70% or more)</div>
+<p id="noroute" style="margin: 12px 0 0; color: #B7CEC4; display: none">No urgent stops right now. The truck stays parked and saves fuel.</p>
+<div style="margin-top: 10px; display: flex; flex-direction: column; gap: 10px">
+<div id="route" style="display: contents"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 110px clamp(20px, 5vw, 72px) 40px; box-sizing: border-box">
+<div class="rv" style="max-width: 720px">
+<div style="font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent)">Innovations</div>
+<h2 style="margin: 14px 0 0; font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; letter-spacing: -0.03em">More than a full-bin alarm.</h2>
+</div>
+<div style="margin-top: 48px; display: flex; flex-wrap: wrap; gap: 22px">
+<div class="card rv" style="flex: 1 1 340px; padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M8 20h4l3-9 5 18 4-14 3 5h5" stroke="#3DDC97" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">Predictive overflow AI</h3>
+<p style="margin: 0; color: #B7CEC4">Learns daily and weekly fill curves, plus festivals and market days, so the alert arrives hours before the bin is full.</p>
+</div>
+<div class="card rv" style="flex: 1 1 340px; padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="11" cy="29" r="4" stroke="#5EC8FF" stroke-width="2.4"/><circle cx="29" cy="11" r="4" stroke="#5EC8FF" stroke-width="2.4"/><path d="M15 29h8a5 5 0 0 0 0-10h-6a5 5 0 0 1 0-10h8" stroke="#5EC8FF" stroke-width="2.4" stroke-linecap="round"/></svg>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">Dynamic route optimisation</h3>
+<p style="margin: 0; color: #B7CEC4">Rebuilds the truck route each morning and whenever a new alert arrives, skipping bins that can safely wait.</p>
+</div>
+<div class="card rv" style="flex: 1 1 340px; padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 6c4 5 9 8 9 15a9 9 0 0 1-18 0c0-3 1-5 3-7 0 3 2 4 3 4 0-4-1-8 3-12Z" stroke="#FFC857" stroke-width="2.4" stroke-linejoin="round"/></svg>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">Fire, odour and tilt safety</h3>
+<p style="margin: 0; color: #B7CEC4">Temperature and gas sensors catch smouldering waste early. A tilt sensor reports bins knocked over or stolen.</p>
+</div>
+<div class="card rv" style="flex: 1 1 340px; padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="12" y="5" width="16" height="30" rx="4" stroke="#B79BFF" stroke-width="2.4"/><path d="M17 30h6" stroke="#B79BFF" stroke-width="2.4" stroke-linecap="round"/><path d="M16 14h8M16 19h5" stroke="#B79BFF" stroke-width="2.4" stroke-linecap="round"/></svg>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">Citizen app with QR report</h3>
+<p style="margin: 0; color: #B7CEC4">Residents scan a QR code on any bin to report damage or overflow with a photo, then follow the ticket until it is closed.</p>
+</div>
+<div class="card rv" style="flex: 1 1 340px; padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M13 8l-5 9h6M27 8l5 9h-6M20 33l-5-9h10" stroke="#3DDC97" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 8h6l3 5M8 17l3 6 4-1M32 17l-3 6-5-1" stroke="#3DDC97" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">Smart segregation</h3>
+<p style="margin: 0; color: #B7CEC4">An optional camera and on-device vision model spots wet, dry and recyclable waste. It gives instant feedback at the bin and tracks purity per ward.</p>
+</div>
+<div class="card rv" style="flex: 1 1 340px; padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="6" y="22" width="6" height="12" rx="2" fill="#5EC8FF"/><rect x="17" y="14" width="6" height="20" rx="2" fill="#5EC8FF"/><rect x="28" y="6" width="6" height="28" rx="2" fill="#5EC8FF"/></svg>
+<h3 style="margin: 18px 0 8px; font-family: Sora, sans-serif; font-size: 21px">City-wide analytics</h3>
+<p style="margin: 0; color: #B7CEC4">Heatmaps show hotspots, under-served wards and bins that need relocating, giving planners evidence for every decision.</p>
+</div>
+</div>
+</section>
+
+<!-- STACK -->
+<section style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 90px clamp(20px, 5vw, 72px) 40px; box-sizing: border-box">
+<div class="rv" style="padding: 40px; border-radius: 28px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)">
+<h2 style="margin: 0; font-family: Sora, sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em">Technology stack</h2>
+<div style="margin-top: 26px; display: flex; flex-wrap: wrap; gap: 14px 40px">
+<div style="flex: 1 1 220px"><div style="font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent)">Device</div><div style="margin-top: 8px; color: #B7CEC4">ESP32, ultrasonic or ToF sensor, tilt, temperature and gas sensors, solar cell and Li-ion battery</div></div>
+<div style="flex: 1 1 220px"><div style="font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent)">Network</div><div style="margin-top: 8px; color: #B7CEC4">LoRaWAN, NB-IoT or GSM, with MQTT messaging to the cloud</div></div>
+<div style="flex: 1 1 220px"><div style="font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent)">Cloud and AI</div><div style="margin-top: 8px; color: #B7CEC4">Time-series database, fill-forecast model, vehicle routing solver</div></div>
+<div style="flex: 1 1 220px"><div style="font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent)">Apps</div><div style="margin-top: 8px; color: #B7CEC4">Admin web dashboard, driver mobile app, citizen app with QR reporting</div></div>
+</div>
+</div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact" style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 100px clamp(20px, 5vw, 72px) 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div class="rv" style="flex: 1 1 380px; min-width: 0">
+<div style="font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent)">Impact</div>
+<h2 style="margin: 14px 0 0; font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; letter-spacing: -0.03em">Cleaner streets, leaner fleets.</h2>
+<p style="margin: 18px 0 0; color: #B7CEC4; font-size: 18px">These are pilot goals to validate on real bins, not measured results. Each one is tracked from day one on the dashboard.</p>
+</div>
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 26px">
+<div class="rv">
+<div style="display: flex; justify-content: space-between; font-weight: 700"><span>Fewer overflow complaints</span><span style="color: var(--accent)">Goal: down sharply</span></div>
+<div style="margin-top: 10px; height: 12px; border-radius: 12px; background: rgba(255,255,255,.1); overflow: hidden"><div class="bar" style="height: 100%; width: 88%; border-radius: 12px; background: linear-gradient(90deg, #3DDC97, #8FF0C4)"></div></div>
+</div>
+<div class="rv">
+<div style="display: flex; justify-content: space-between; font-weight: 700"><span>Fewer unnecessary truck trips</span><span style="color: var(--accent)">Goal: down</span></div>
+<div style="margin-top: 10px; height: 12px; border-radius: 12px; background: rgba(255,255,255,.1); overflow: hidden"><div class="bar" style="height: 100%; width: 72%; border-radius: 12px; background: linear-gradient(90deg, #5EC8FF, #A5E1FF)"></div></div>
+</div>
+<div class="rv">
+<div style="display: flex; justify-content: space-between; font-weight: 700"><span>Lower fuel use and emissions</span><span style="color: var(--accent)">Goal: down</span></div>
+<div style="margin-top: 10px; height: 12px; border-radius: 12px; background: rgba(255,255,255,.1); overflow: hidden"><div class="bar" style="height: 100%; width: 64%; border-radius: 12px; background: linear-gradient(90deg, #FFC857, #FFE0A0)"></div></div>
+</div>
+<div class="rv">
+<div style="display: flex; justify-content: space-between; font-weight: 700"><span>Better segregation at source</span><span style="color: var(--accent)">Goal: up</span></div>
+<div style="margin-top: 10px; height: 12px; border-radius: 12px; background: rgba(255,255,255,.1); overflow: hidden"><div class="bar" style="height: 100%; width: 56%; border-radius: 12px; background: linear-gradient(90deg, #B79BFF, #D6C8FF)"></div></div>
+</div>
+</div>
+</section>
+
+<!-- ROADMAP -->
+<section style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 90px clamp(20px, 5vw, 72px) 40px; box-sizing: border-box">
+<h2 class="rv" style="margin: 0; font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(28px, 3.6vw, 42px); letter-spacing: -0.025em">Rollout roadmap</h2>
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 18px">
+<div class="card rv" style="flex: 1 1 240px; padding: 24px; border-radius: 22px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)"><div style="font-weight: 700; color: var(--accent)">Phase 1 · Pilot</div><div style="margin-top: 8px; color: #B7CEC4">Instrument 50 bins in one ward and calibrate sensors and alert thresholds.</div></div>
+<div class="card rv" style="flex: 1 1 240px; padding: 24px; border-radius: 22px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)"><div style="font-weight: 700; color: var(--accent)">Phase 2 · Optimise</div><div style="margin-top: 8px; color: #B7CEC4">Train the fill-forecast model and switch trucks to dynamic routes.</div></div>
+<div class="card rv" style="flex: 1 1 240px; padding: 24px; border-radius: 22px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)"><div style="font-weight: 700; color: var(--accent)">Phase 3 · Engage</div><div style="margin-top: 8px; color: #B7CEC4">Launch the citizen app and add camera-based segregation to selected bins.</div></div>
+<div class="card rv" style="flex: 1 1 240px; padding: 24px; border-radius: 22px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04)"><div style="font-weight: 700; color: var(--accent)">Phase 4 · Scale</div><div style="margin-top: 8px; color: #B7CEC4">Extend city-wide with analytics for planning, tenders and reporting.</div></div>
+</div>
+</section>
+
+<!-- CTA -->
+<section style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 90px clamp(20px, 5vw, 72px) 60px; box-sizing: border-box">
+<div class="rv" style="position: relative; overflow: hidden; padding: clamp(36px, 6vw, 72px); border-radius: 36px; background: linear-gradient(135deg, #1B6B4F, #0F3D31 60%, #0A2A22); border: 1px solid rgba(61,220,151,.4); text-align: center">
+<svg class="spin" style="position: absolute; right: -60px; top: -60px; opacity: .15" width="260" height="260" viewBox="0 0 100 100" fill="none" aria-hidden="true"><path d="M50 10a40 40 0 0 1 34 20M90 50a40 40 0 0 1-20 34M50 90a40 40 0 0 1-34-20M10 50a40 40 0 0 1 20-34" stroke="#3DDC97" stroke-width="6" stroke-linecap="round"/></svg>
+<h2 style="position: relative; margin: 0 auto; max-width: 720px; font-family: Sora, sans-serif; font-weight: 800; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.1; letter-spacing: -0.03em">Ready to make overflow a thing of the past?</h2>
+<p style="position: relative; margin: 18px auto 0; max-width: 560px; color: #C9E3D8; font-size: 18px">Start with one ward, prove the savings, then grow to the whole city.</p>
+<div style="position: relative; margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px">
+<a href="#live" class="btn" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 30px; border-radius: 999px; background: var(--accent); color: #062018; font-weight: 700; font-size: 16px">Replay the live demo</a>
+<a href="#top" class="btn" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 30px; border-radius: 999px; border: 1.5px solid rgba(232,245,239,.5); font-weight: 600; font-size: 16px">Back to top</a>
+</div>
+</div>
+</section>
+
+<footer style="position: relative; z-index: 1; max-width: 1296px; margin: 0 auto; padding: 24px clamp(20px, 5vw, 72px) 44px; box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; color: #9DB8AE; font-size: 14px; border-top: 1px solid rgba(255,255,255,.1)">
+<div style="font-family: Sora, sans-serif; font-weight: 700; color: #E8F5EF">EcoSense</div>
+<div>Smart waste management and garbage overflow detection concept. Demo data is simulated.</div>
+</footer>
+
+</div>
+
+<script>
+const GREEN = '#3DDC97', AMBER = '#FFC857', RED = '#FF6B5F';
+let rush = false, collected = 0;
+let bins = [
+  { id: 1, name: 'Central Market', zone: 'Zone A', level: 34, rate: 1.4 },
+  { id: 2, name: 'Bus Terminus', zone: 'Zone A', level: 71, rate: 2.1 },
+  { id: 3, name: 'City Park Gate', zone: 'Zone B', level: 18, rate: 0.9 },
+  { id: 4, name: 'Hospital Road', zone: 'Zone C', level: 83, rate: 1.6 },
+  { id: 5, name: 'Food Street', zone: 'Zone B', level: 52, rate: 2.4 },
+  { id: 6, name: 'Railway Station', zone: 'Zone C', level: 63, rate: 1.9 }
+];
+
+function describe(b) {
+  const pct = Math.round(b.level);
+  let color = GREEN, status = 'Healthy', chipBg = 'rgba(61,220,151,.15)', chipFg = '#3DDC97';
+  let border = 'rgba(255,255,255,.12)', btnBg = 'transparent', btnFg = '#B7CEC4', btnBorder = 'rgba(255,255,255,.25)';
+  if (pct >= 85) {
+    color = RED; status = pct >= 100 ? 'Overflowing' : 'Overflow risk';
+    chipBg = 'rgba(255,107,95,.2)'; chipFg = '#FF9A90';
+    border = 'rgba(255,107,95,.65)'; btnBg = RED; btnFg = '#2A0805'; btnBorder = RED;
+  } else if (pct >= 60) {
+    color = AMBER; status = 'Filling'; chipBg = 'rgba(255,200,87,.16)'; chipFg = '#FFC857';
+    border = 'rgba(255,200,87,.4)';
+  }
+  return { pct, color, status, chipBg, chipFg, border, btnBg, btnFg, btnBorder };
+}
+
+function draw() {
+  const rows = bins.map((b) => ({ b, d: describe(b) }));
+  document.getElementById('bins').innerHTML = rows.map(({ b, d }) => `
+    <div class="card" style="flex: 1 1 190px; padding: 22px; border-radius: 22px; border: 1px solid ${d.border}; background: rgba(255,255,255,.04); box-sizing: border-box">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+        <div><div style="font-family: Sora, sans-serif; font-weight: 700; font-size: 16px">${b.name}</div>
+        <div style="font-size: 13px; color: #9DB8AE">${b.zone}</div></div>
+        <div style="padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; background: ${d.chipBg}; color: ${d.chipFg}">${d.status}</div>
+      </div>
+      <div style="margin-top: 18px; display: flex; align-items: flex-end; gap: 18px">
+        <div style="position: relative; width: 62px; height: 132px; border-radius: 10px 10px 16px 16px; border: 2.5px solid ${d.color}; overflow: hidden; background: rgba(0,0,0,.25); flex: none">
+          <div class="tube" style="position: absolute; left: 0; right: 0; bottom: 0; height: ${d.pct}%; background: ${d.color}; opacity: .9"></div>
+        </div>
+        <div><div style="font-family: Sora, sans-serif; font-weight: 800; font-size: 38px; line-height: 1; color: ${d.color}">${d.pct}<span style="font-size: 18px">%</span></div>
+        <div style="font-size: 13px; color: #9DB8AE; margin-top: 6px">fill level</div></div>
+      </div>
+      <button data-id="${b.id}" class="btn dispatch" style="margin-top: 18px; width: 100%; min-height: 44px; border-radius: 12px; border: 1.5px solid ${d.btnBorder}; background: ${d.btnBg}; color: ${d.btnFg}; font-weight: 700; font-size: 14px; cursor: pointer">Dispatch truck</button>
+    </div>`).join('');
+
+  const route = rows.filter((r) => r.d.pct >= 70).sort((a, c) => c.d.pct - a.d.pct);
+  document.getElementById('route').innerHTML = route.map((r, i) => `
+    <div style="display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; background: rgba(0,0,0,.25); margin-top: 10px">
+      <div style="width: 28px; height: 28px; border-radius: 50%; background: ${r.d.color}; color: #062018; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex: none">${i + 1}</div>
+      <div style="flex: 1; min-width: 0; font-weight: 500">${r.b.name}</div>
+      <div style="font-weight: 700; color: ${r.d.color}">${r.d.pct}%</div>
+    </div>`).join('');
+  document.getElementById('noroute').style.display = route.length ? 'none' : 'block';
+  document.getElementById('alerts').textContent = rows.filter((r) => r.d.pct >= 85).length;
+  document.getElementById('collected').textContent = collected;
+}
+
+document.getElementById('bins').addEventListener('click', (e) => {
+  const btn = e.target.closest('.dispatch');
+  if (!btn) return;
+  const id = Number(btn.dataset.id);
+  bins = bins.map((b) => (b.id === id ? { ...b, level: 4 } : b));
+  collected++;
+  draw();
+});
+
+const rushBtn = document.getElementById('rush');
+rushBtn.addEventListener('click', () => {
+  rush = !rush;
+  rushBtn.textContent = rush ? 'Rush hour: ON (tap to stop)' : 'Simulate rush hour';
+  rushBtn.style.background = rush ? '#FFC857' : 'transparent';
+  rushBtn.style.color = rush ? '#2A1D00' : '#FFC857';
+});
+
+setInterval(() => {
+  const mult = rush ? 2.8 : 1;
+  bins = bins.map((b) => ({ ...b, level: Math.min(100, b.level + b.rate * mult * (0.6 + Math.random() * 0.8)) }));
+  draw();
+}, 1100);
+
+draw();
+</script>
+</body>
+</html>
